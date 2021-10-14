@@ -10,22 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tiendavirtualfsfront.modelo.Usuarios;
-import tiendavirtualfsfront.json.UsuariosJSON;
+import tiendavirtualfsfront.modelo.Clientes;
+import tiendavirtualfsfront.json.ClientesJSON;
 
 /**
- * Servlet implementation class ControladorUsuarios
+ * Servlet implementation class ControladorClientes
  */
-@WebServlet("/ControladorUsuarios")
-public class ControladorUsuarios extends HttpServlet {
+@WebServlet("/ControladorClientes")
+public class ControladorClientes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+    
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public ControladorUsuarios() {
+    public ControladorClientes() {
+        super();
         // TODO Auto-generated constructor stub
-    	super();
     }
 
 	/**
@@ -36,22 +36,21 @@ public class ControladorUsuarios extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		PrintWriter out = response.getWriter();
 		String cedula = request.getParameter("cedula");
-		String nombre = request.getParameter("nombre");
+		String direccion = request.getParameter("direccion");
 		String email = request.getParameter("email");
-		String usuario = request.getParameter("user");
-		String contrasena = request.getParameter("pass");
-		//botones
+		String nombre = request.getParameter("nombre");
+		String telefono = request.getParameter("telefono");
 		String consultar = request.getParameter("Consultar");
 		String Agregar = request.getParameter("Agregar");
-		String Listar = request.getParameter("Listar_Usuarios");
+		String Listar = request.getParameter("Listar_Clientes");
 		String eliminar = request.getParameter("Eliminar");
 		String modificar = request.getParameter("Actualizar");
 		
 		if (Listar != null) {
 			try {
-				ArrayList<Usuarios> lista = UsuariosJSON.getJSON();
+				ArrayList<Clientes> lista = ClientesJSON.getJSON();
 				request.setAttribute("lista", lista);
-				request.getRequestDispatcher("Usuarios.jsp").forward(request, response);
+				request.getRequestDispatcher("Clientes.jsp").forward(request, response);
 			} catch (Exception e) {
 				out.println("Catch :(");
 				// TODO: handle exception
@@ -61,19 +60,19 @@ public class ControladorUsuarios extends HttpServlet {
 			if (cedula != "" && cedula != null) {
 				boolean existe = false;					
 				try {
-					ArrayList<Usuarios> lista = UsuariosJSON.getforIdJSON(cedula);
-					for (Usuarios usuario_prueba: lista) {
-						if(usuario_prueba.getCedula_usuario() == Long.parseLong(cedula)) {
+					ArrayList<Clientes> lista = ClientesJSON.getJSON();
+					for (Clientes cliente_prueba: lista) {
+						if(cliente_prueba.getCedula_cliente() == Long.parseLong(cedula)) {
 							existe = true;
 						}
 					}
 					if(!existe) {
 						request.setAttribute("validacion", 8);//El usuario no existe
-						request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+						request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 					}else {
-						ArrayList<Usuarios> listaid = UsuariosJSON.getforIdJSON(cedula);
+						ArrayList<Clientes> listaid = ClientesJSON.getforIdJSON(cedula);
 						request.setAttribute("lista", listaid );
-						request.getRequestDispatcher("Usuarios.jsp").forward(request, response);
+						request.getRequestDispatcher("Clientes.jsp").forward(request, response);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -83,18 +82,17 @@ public class ControladorUsuarios extends HttpServlet {
 				}
 			}else {
 				request.setAttribute("validacion", 0);//Ingrese el campo cedula
-				request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+				request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 			}
 		}
 		if (Agregar != null) {
-			if (cedula != "" && nombre != "" && email != "" && usuario != "" && contrasena != "" && cedula != null && nombre != null && email != null && usuario != null && contrasena != null) {
+			if (cedula != "" && direccion != "" && email != "" && nombre != "" && telefono != "" && cedula != null && direccion != null && email != null && nombre != null && telefono != null) {
 				System.out.println("Entro If");
-				System.out.println(cedula);
 				boolean existe = false;
 				try {
-					ArrayList<Usuarios> listaid = UsuariosJSON.getforIdJSON(cedula);
-					for (Usuarios usuario_prueba: listaid) {
-						if(usuario_prueba.getCedula_usuario() == Long.parseLong(cedula)) {
+					ArrayList<Clientes> listaid = ClientesJSON.getforIdJSON(cedula);
+					for (Clientes cliente_prueba: listaid) {
+						if(cliente_prueba.getCedula_cliente() == Long.parseLong(cedula)) {
 							existe = true;
 						}
 					}
@@ -104,51 +102,51 @@ public class ControladorUsuarios extends HttpServlet {
 					// TODO: handle exception
 				}
 				if (!existe) {
-					Usuarios user = new Usuarios();
-					user.setCedula_usuario(Long.parseLong(cedula));
-					user.setEmail_usuario(email);
-					user.setNombre_usuario(nombre);
-					user.setPassword(contrasena);
-					user.setUsuario(usuario);
-					int creado = UsuariosJSON.postJSON(user);
+					Clientes cliente = new Clientes();
+					cliente.setCedula_cliente(Long.parseLong(cedula));
+					cliente.setDireccion_cliente(direccion);
+					cliente.setEmail_cliente(email);
+					cliente.setNombre_cliente(nombre);
+					cliente.setTelefono_cliente(telefono);
+					int creado = ClientesJSON.postJSON(cliente);
 					System.out.println(creado);
 					if(creado == 200) {
 						request.setAttribute("validacion", 2);//Usuario Creado
-						request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+						request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 					}else {
 						request.setAttribute("validacion", 3);//Ha habido un error
-						request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+						request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 					}
 				}else {
 					request.setAttribute("validacion", 4);//El usuario ya existe
-					request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+					request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 				}	
 			} else {
 				request.setAttribute("validacion", 1);//Ingrese todos los campos
-				request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+				request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 			}
 		}
 		if (eliminar != null) {
 			if (cedula != "" && cedula != null) {
 				boolean existe = false;					
 				try {
-					ArrayList<Usuarios> lista = UsuariosJSON.getJSON();
-					for (Usuarios usuario_prueba: lista) {
-						if(usuario_prueba.getCedula_usuario() == Long.parseLong(cedula)) {
+					ArrayList<Clientes> lista = ClientesJSON.getJSON();
+					for (Clientes cliente_prueba: lista) {
+						if(cliente_prueba.getCedula_cliente() == Long.parseLong(cedula)) {
 							existe = true;
 						}
 					}
 					if(!existe) {
 						request.setAttribute("validacion", 8);//El usuario no existe
-						request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+						request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 					}else {
-						int borrado = UsuariosJSON.deleteJSON(cedula);
+						int borrado = ClientesJSON.deleteJSON(cedula);
 						if(borrado == 200) {
 							request.setAttribute("validacion", 5);//Usuario Borrado
-							request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+							request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 						}else {
 							request.setAttribute("validacion", 3);//Ha habido un error
-							request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+							request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 						}
 					}
 				} catch (Exception e) {
@@ -159,17 +157,17 @@ public class ControladorUsuarios extends HttpServlet {
 				}
 			} else {
 				request.setAttribute("validacion", 0);//Ingrese el campo cedula
-				request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+				request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 			}
 		}
 		if (modificar != null) {
-			if (cedula != "" && nombre != "" && email != "" && usuario != "" && contrasena != "" && cedula != null && nombre != null && email != null && usuario != null && contrasena != null) {
+			if (cedula != "" && direccion != "" && email != "" && nombre != "" && telefono != "" && cedula != null && direccion != null && email != null && nombre != null && telefono != null) {
 				System.out.println("Entro If");
 				boolean existe = false;
 				try {
-					ArrayList<Usuarios> listaid = UsuariosJSON.getforIdJSON(cedula);
-					for (Usuarios usuario_prueba: listaid) {
-						if(usuario_prueba.getCedula_usuario() == Long.parseLong(cedula)) {
+					ArrayList<Clientes> listaid = ClientesJSON.getforIdJSON(cedula);
+					for (Clientes cliente_prueba: listaid) {
+						if(cliente_prueba.getCedula_cliente() == Long.parseLong(cedula)) {
 							existe = true;
 						}
 					}
@@ -179,41 +177,41 @@ public class ControladorUsuarios extends HttpServlet {
 					// TODO: handle exception
 				}
 				if (existe) {
-					Usuarios user = new Usuarios();
-					user.setCedula_usuario(Long.parseLong(cedula));
-					user.setEmail_usuario(email);
-					user.setNombre_usuario(nombre);
-					user.setPassword(contrasena);
-					user.setUsuario(usuario);
-					int creado = UsuariosJSON.postJSON(user);
+					Clientes cliente = new Clientes();
+					cliente.setCedula_cliente(Long.parseLong(cedula));
+					cliente.setDireccion_cliente(direccion);
+					cliente.setEmail_cliente(email);
+					cliente.setNombre_cliente(nombre);
+					cliente.setTelefono_cliente(telefono);
+					int creado = ClientesJSON.postJSON(cliente);
 					System.out.println(creado);
 					if(creado == 200) {
 						request.setAttribute("validacion", 6);//Usuario Modificado
-						request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+						request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 					}else {
 						request.setAttribute("validacion", 3);//Ha habido un error
-						request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+						request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 					}
 				}else {
 					request.setAttribute("validacion", 7);//El usuario no existe no se puede modificar
-					request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+					request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 				}	
 			} else {
 				request.setAttribute("validacion", 1);//Ingrese todos los campos
-				request.getRequestDispatcher("/Usuarios.jsp").forward(request, response);
+				request.getRequestDispatcher("/Clientes.jsp").forward(request, response);
 			}
 		}
 		String editar = request.getParameter("editar");
 		if(editar != null) {
 			Long id = Long.parseLong(request.getParameter("id"));
 			try {
-				ArrayList<Usuarios> listaid = UsuariosJSON.getforIdJSON(String.valueOf(id));
-				Usuarios user = new Usuarios();
+				ArrayList<Clientes> listaid = ClientesJSON.getforIdJSON(String.valueOf(id));
+				Clientes cliente = new Clientes();
 				for (int i = 0;i<listaid.size();i++) {
-					user = listaid.get(i);
+					cliente = listaid.get(i);
 				}
-				request.setAttribute("usuarios", user);
-				request.getRequestDispatcher("Usuarios.jsp").forward(request, response);
+				request.setAttribute("clientes", cliente);
+				request.getRequestDispatcher("Clientes.jsp").forward(request, response);
 			} catch (Exception e) {
 				out.println("Catch editar aquiiiiii");
 				out.println(cedula);
