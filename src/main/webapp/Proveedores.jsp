@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta charset="utf-8">
-<title>CLIENTE</title>
+<title>PROVEEDORES</title>
+</head>
 <body>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -71,29 +71,30 @@ h3, p {
 			<div class="col-lg-5 col-md-6 col12">
 				<div class="card">
 					<div class="card-header bg-success text-light">
-						<span>Sistema de registro de Clientes</span>
+						<span>Sistema de registro de Proveedores</span>
 					</div>
 					<div class="card-body">
-						<form action="ControladorClientes" method="GET">
-						<!-- VALIDACIIONES -->
+						<form action="ControladorProveedores" method="GET">
+						
+							<!-- VALIDACIIONES -->
 							<c:if test="${validacion == 0}">
 							<div class = "card">
 								<div class="card-body bg-danger rounded">
-									<h5 class = text-center>Por favor digite el campo cedula</h5>
+									<h5 class = text-center>Por favor digite el campo NIT</h5>
 								</div>
 							</div>
 							</c:if>	
 							<c:if test="${validacion == 1}">
 							<div class = "card">
 								<div class="card-body bg-danger rounded">
-									<h5 class = text-center>Por favor digite todos los campos para agregar el cliente</h5>
+									<h5 class = text-center>Por favor digite todos los campos para agregar el proveedor</h5>
 								</div>
 							</div>
 							</c:if>	
 							<c:if test="${validacion == 2}">
 							<div class = "card">
 								<div class="card-body bg-success rounded">
-									<h5 class = text-center>Cliente creado</h5>
+									<h5 class = text-center>Proveedor creado</h5>
 								</div>
 							</div>
 							</c:if>	
@@ -107,56 +108,63 @@ h3, p {
 							<c:if test="${validacion == 4}">
 							<div class = "card">
 								<div class="card-body bg-danger rounded">
-									<h5 class = text-center>El cliente ya existe</h5>
+									<h5 class = text-center>El proveedor ya existe</h5>
 								</div>
 							</div>
 							</c:if>	
 							<c:if test="${validacion == 5}">
 							<div class = "card">
 								<div class="card-body bg-warning rounded">
-									<h5 class = text-center>Cliente eliminado</h5>
+									<h5 class = text-center>Proveedor eliminado</h5>
 								</div>
 							</div>
 							</c:if>	
 							<c:if test="${validacion == 6}">
 							<div class = "card">
 								<div class="card-body bg-success rounded">
-									<h5 class = text-center>Cliente Modificado</h5>
+									<h5 class = text-center>Proveedor Modificado</h5>
 								</div>
 							</div>
 							</c:if>	
 							<c:if test="${validacion == 7}">
 							<div class = "card">
 								<div class="card-body bg-danger rounded">
-									<h5 class = text-center>El cliente no existe no se puede modificar</h5>
+									<h5 class = text-center>El proveedor no existe no se puede modificar</h5>
 								</div>
 							</div>
 							</c:if>	
 							<c:if test="${validacion == 8}">
 							<div class = "card">
 								<div class="card-body bg-danger rounded">
-									<h5 class = text-center>El cliente no existe</h5>
+									<h5 class = text-center>El proveedor no existe</h5>
+								</div>
+							</div>
+							</c:if>	
+							<c:if test="${validacion == 9}">
+							<div class = "card">
+								<div class="card-body bg-danger rounded">
+									<h5 class = text-center>Por favor digite todos los campos para actualizar el proveedor</h5>
 								</div>
 							</div>
 							</c:if>	
 							
 						<!--FIN VALIDACIONES  -->
 							<p>
-								Cédula: <input class="form-control" placeholder="Digite cedula" type="number" name="cedula" value = "${clientes.getCedula_cliente()}">
+								NIT: <input class="form-control" placeholder="Digite NIT" type="number" name="NIT" value = "${proveedor.getNitproveedor()}">
+							</p>
+							<p>
+								Nombre Proveedor:<input class="form-control" placeholder="Digite Nombre del proveedor" type="text" name="nombreproveedor" id="idNombreProveedor" value = "${proveedor.getNombre_proveedor()}">
+							</p>
+							<p>
+								Ciudad:<input class="form-control" placeholder="Digite ciudad" type="text" name="ciudad" id="idciudad" value = "${proveedor.getCiudad_proveedor()}">
 							</p>
 							<p>
 								Direccion : <input class="form-control" type="address" placeholder="Digite su Direccion "
-									name="direccion" value = "${clientes.getDireccion_cliente()}">
-							</p>	
-							<p>
-								E-mail:<input class="form-control" placeholder="Digite E-mail" type="e-mail" name="email" id="idEmail" value = "${clientes.getEmail_cliente()}">
+									name="Direcion" value = "${proveedor.getDireccion_proveedor()}">
 							</p>
 							<p>
-								Nombre:<input class="form-control" placeholder="Digite Nombre Completo" type="text" name="nombre" id="idNombre" value = "${clientes.getNombre_cliente()}">
-							</p>
-							<p>
-								Teléfono: <input class="form-control" type="tel"
-									placeholder="Digite su Telefono" name="telefono" value = "${clientes.getTelefono_cliente()}">
+								Telefono: <input class="form-control" type="tel"
+									placeholder="Digite su Telefono" name="Tel" value = "${proveedor.getTelefono_proveedor()}">
 							</p>
 							<div class="d-flex justify-content-between align-items-center"">
 								<input type="submit" name="Agregar" value="Agregar" class="btn btn-success btn-sm"> 
@@ -170,9 +178,9 @@ h3, p {
 			</div>
 			<div class="col-lg col-mg col-sm col">
 				<div class="card-header bg-success text-light d-flex justify-content-between align-items-center">
-					<span>Presione para Listar los Clientes</span>
-					<form action="ControladorClientes" method ="GET">
-						<input type="submit" name="Listar_Clientes" value="Listar_Clientes" class="btn btn-primary btn-sm">
+					<span>Presione para Listar los Proveedores</span>
+					<form action="ControladorProveedores" method ="GET">
+						<input type="submit" name="Listar_Proveedores" value="Listar_Proveedores" class="btn btn-primary btn-sm">
 					</form>
 				</div>
 				<div class="card-body">
@@ -180,23 +188,23 @@ h3, p {
 						class="table bg-light table-bordered table-hover table-stripped">
 						<thead>
 							<tr>
-								<th>Cedula</th>
+								<th>NIT</th>
+								<th>Nombre_Proveedores</th>
+								<th>Ciudad</th>
 								<th>Direccion</th>
-								<th>E-mail</th>
-								<th>Nombre</th>
 								<th>Telefono</th>
 								<th>Accion</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="clientes" items="${lista}">
+							<c:forEach var="provedor" items="${lista}">
 								<tr>
-									<td>${clientes.getCedula_cliente()}</td>
-									<td>${clientes.getDireccion_cliente()}</td>
-									<td>${clientes.getEmail_cliente()}</td>
-									<td>${clientes.getNombre_cliente()}</td>
-									<td>${clientes.getTelefono_cliente()}</td>
-									<td><a class="btn btn-warning" href="ControladorClientes?editar=editar&id=${clientes.getCedula_cliente()}">Editar</a>
+									<td>${provedor.getNitproveedor()}</td>
+									<td>${provedor.getNombre_proveedor()}</td>
+									<td>${provedor.getCiudad_proveedor()}</td>
+									<td>${provedor.getDireccion_proveedor()}</td>
+									<td>${provedor.getTelefono_proveedor()}</td>
+									<td><a class="btn btn-warning" href="ControladorProveedores?editar=editar&id=${provedor.getNitproveedor()}">Editar</a>
 								</tr>
 							</c:forEach>
 						</tbody>

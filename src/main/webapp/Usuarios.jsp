@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta charset="utf-8">
-<title>Usuario</title>
+<title>USUARIO</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -32,36 +32,36 @@ h3, p {
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?accion=Menu&menu=Principal">Inicio</a></li>
+						class="btn btn-outline-light" href="ControladorLogin?accion=Menu&menu=Principal">Inicio</a></li>
 					<!-- Boton Navbar Inicio  -->
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?accion=Menu&menu=Usuario">Usuarios</a></li>
+						class="btn btn-outline-light" href="ControladorLogin?accion=Menu&menu=Usuario">Usuarios</a></li>
 					<!-- Boton Navbar Usuario  -->
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?accion=Menu&menu=Cliente">Clientes</a></li>
+						class="btn btn-outline-light" href="ControladorLogin?accion=Menu&menu=Cliente">Clientes</a></li>
 					<!-- Boton Navbar Cliente  -->
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?accion=Menu&menu=Proveedor">Proveedores</a></li>
+						class="btn btn-outline-light" href="ControladorLogin?accion=Menu&menu=Proveedor">Proveedores</a></li>
 					<!-- Boton Navbar Proveedor  -->
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?accion=Menu&menu=Productos">Productos</a></li>
+						class="btn btn-outline-light" href="ControladorLogin?accion=Menu&menu=Productos">Productos</a></li>
 					<!-- Boton Navbar Productos  -->
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?accion=Menu&menu=Ventas">Ventas</a></li>
+						class="btn btn-outline-light" href="ControladorLogin?accion=Menu&menu=Ventas">Ventas</a></li>
 					<!-- Boton Navbar Ventas  -->
 					<li class="nav-item"><a
 						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light" href="Controlador?accion=Menu&menu=Reportes">Reportes</a></li>
+						class="btn btn-outline-light" href="ControladorLogin?accion=Menu&menu=Reportes">Reportes</a></li>
 					<!-- Boton Navbar Reportes  -->
 				</ul>
 			</div>
 			<!-- Boton salir -->
-				<a class="btn btn-outline-light" href="Controlador?accion=Menu&menu=Salir"> Salir</a>
+				<a class="btn btn-outline-light" href="ControladorLogin?accion=Menu&menu=Salir"> Salir</a>
 		</nav>
 		<!-- Fin Navbar -->
 	</header>
