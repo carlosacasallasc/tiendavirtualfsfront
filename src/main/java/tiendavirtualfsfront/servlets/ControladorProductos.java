@@ -48,7 +48,6 @@ public class ControladorProductos extends HttpServlet {
 				request.getRequestDispatcher("Productos.jsp").forward(request, response);
 			} catch (Exception e) {
 				out.println("Catch :(");
-				// TODO: handle exception
 			}
 		}
 		

@@ -30,12 +30,12 @@ public class ProductosJSON {
 		while (i.hasNext()) {
 			JSONObject innerObj = (JSONObject) i.next();
 			Productos productos = new Productos();
-			productos.setCodigoProducto(Long.parseLong(innerObj.get("codigo_producto").toString())); //convertir de String a Long
-			productos.setIvaCompra(Double.parseDouble(innerObj.get("ivacompra").toString()));
-			productos.setNitProveedor(Long.parseLong(innerObj.get("nitproveedor").toString()));
-			productos.setNombreProducto(innerObj.get("nombre_producto").toString());
-			productos.setPrecioCompra(Double.parseDouble(innerObj.get("precio_compra").toString()));
-			productos.setPrecioVenta(Double.parseDouble(innerObj.get("precio_venta").toString()));
+			productos.setCodigoProducto(Long.parseLong(innerObj.get("codigoProducto").toString())); //convertir de String a Long
+			productos.setIvaCompra(Double.parseDouble(innerObj.get("ivaCompra").toString()));
+			productos.setNitProveedor(Long.parseLong(innerObj.get("nitProveedor").toString()));
+			productos.setNombreProducto(innerObj.get("nombreProducto").toString());
+			productos.setPrecioCompra(Double.parseDouble(innerObj.get("precioCompra").toString()));
+			productos.setPrecioVenta(Double.parseDouble(innerObj.get("precioVenta").toString()));
 			lista.add(productos);
 		}
 		return lista;

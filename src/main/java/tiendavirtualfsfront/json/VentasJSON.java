@@ -40,7 +40,7 @@ public class VentasJSON {
 			venta.setCodigo_venta(Long.parseLong(innerObj.get("codigo_venta").toString())); //convertir de String a Long
 			venta.setCedula_cliente(Long.parseLong(innerObj.get("cedula_cliente").toString()));
 			venta.setCedula_usuario(Long.parseLong(innerObj.get("cedula_usuario").toString()));
-			venta.setIvaventa(Double.parseDouble(innerObj.get("ivaventa").toString()));
+			venta.setIvaventa(Double.parseDouble(innerObj.get("iva_venta").toString()));
 			venta.setTotal_venta(Double.parseDouble(innerObj.get("total_venta").toString()));
 			venta.setValor_total(Double.parseDouble(innerObj.get("valor_venta").toString()));
 			lista.add(venta);
