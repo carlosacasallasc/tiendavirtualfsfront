@@ -107,12 +107,12 @@ h3, p {
 							<label class = "col-form-label">Codigo de producto</label>
 								<div class = "col-sm-5">
 									<div class="input-group col-sm-5">
-  										<input class = "form-control" type="text" name ="txtCod" value = "${producto.getCodigo_producto()}"> <!-- Texto Buscar  producto -->
+  										<input class = "form-control" type="text" name ="txtCod" value = "${producto.getCodigoProducto()}"> <!-- Texto Buscar  producto -->
   										<input class="btn btn-outline-success" type="submit" id="Buscar" name = "Buscar2" value ="Buscar Producto"> <!-- Tboton para buscar el producto -->
 									</div>
 								</div>
 								<div class = "col-sm-6 mb-2">
-									<input class = "form-control" type = "text" disabled="disabled" name="nombre_prod" value = "${producto.getNombre_producto()}"> <!-- Texto nombre del producto -->
+									<input class = "form-control" type = "text" disabled="disabled" name="nombre_prod" value = "${producto.getNombreProducto()}"> <!-- Texto nombre del producto -->
 								</div>
 						</div>
 						<div class = "row mb-4">
@@ -120,13 +120,13 @@ h3, p {
 							<div class = "col-sm-4">
 								<div class="input-group col-sm-5 ">
   									<span class="input-group-text bg-success text-light">Valor</span>
-  									<input class = "form-control" type = "text" disabled="disabled" name="valor" value = "${producto.getPrecio_venta()}"> <!-- Texto valor del producto -->
+  									<input class = "form-control" type = "text" disabled="disabled" name="valor" value = "${producto.getPrecioVenta()}"> <!-- Texto valor del producto -->
 								</div>
 							</div>
 							<div class = "col-sm-4">
 								<div class="input-group col-sm-5">
   									<span class="input-group-text bg-success text-light">IVA</span>
-  									<input class = "form-control" type = "text" disabled="disabled" name="IVA" value = "${producto.getIvacompra()}"> <!-- Texto IVA del producto -->
+  									<input class = "form-control" type = "text" disabled="disabled" name="IVA" value = "${producto.getIvaCompra()}"> <!-- Texto IVA del producto -->
 								</div>
 							</div>
 							<div class = "col-sm-3">
@@ -138,7 +138,8 @@ h3, p {
 						</div>
 						<div class = "row justify-content-md-center">
 							<div class="d-grid gap-2">
-								<input class="btn btn-success" type = "submit" name = "Agregar" value ="Agregar Producto"> <!-- Agregar producto al carro o lista de compras -->
+								<input class="btn btn-success" type = "submit" name = "Agregar" value ="Agr
+								egar Producto"> <!-- Agregar producto al carro o lista de compras -->
 							</div>
 						</div>
 						</form>

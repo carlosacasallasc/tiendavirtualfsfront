@@ -6,32 +6,31 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Ksallas/Universidad El Bosque/Ejemplos/csv/javacsv.jar">
+	<classpathentry kind="lib" path="C:/Users/Arbey Lopez/Documents/Editha/MisionTIC/Ciclo 3/Proyecto/Libreria/javacsv.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Ksallas/Universidad El Bosque/Ejemplos/Librerias/java-json.jar">
+	<classpathentry kind="lib" path="C:/Users/Arbey Lopez/Documents/Editha/MisionTIC/Ciclo 3/Proyecto/Libreria/java-json.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Ksallas/Universidad El Bosque/Ejemplos/Librerias/javax.security.jar">
+	<classpathentry kind="lib" path="C:/Users/Arbey Lopez/Documents/Editha/MisionTIC/Ciclo 3/Proyecto/Libreria/jstl-1.2.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Ksallas/Universidad El Bosque/Ejemplos/Librerias/servlet-api.jar">
+	<classpathentry kind="lib" path="C:/Users/Arbey Lopez/Documents/Editha/MisionTIC/Ciclo 3/Proyecto/Libreria/servlet-api.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Ksallas/Universidad El Bosque/Ejemplos/Librerias/json-simple-1.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Arbey Lopez/Documents/Editha/MisionTIC/Ciclo 3/Proyecto/Libreria/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Apache/apache-tomcat-9.0.46/bin/bootstrap.jar"/>
+	<classpathentry kind="lib" path="C:/Apache/apache-tomcat-9.0.46/bin/commons-daemon.jar"/>
+	<classpathentry kind="lib" path="C:/Apache/apache-tomcat-9.0.46/bin/tomcat-juli.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
